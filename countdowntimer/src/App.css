@@ -1,0 +1,17 @@
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.inputs-container input {
+  width: 2rem;
+  font-size: 1.25rem;
+  padding: 16px;
+  margin: 0 5px 20px;
+}
+
+.btns > button {
+  text-align: center;
+  margin: 0px 5px;
+  padding: 8px 16px;
+}
