@@ -1,0 +1,13 @@
+ul {
+  display: grid;
+  grid-template-columns: repeat(3, 250px);
+}
+
+li {
+  list-style: none;
+}
+
+ul img {
+  width: 150px;
+  height: 150px;
+}
