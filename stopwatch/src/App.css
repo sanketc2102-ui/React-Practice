@@ -1,0 +1,21 @@
+.container {
+  text-align: center;
+  margin-top: 50px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+.time-display {
+  font-size: 2rem;
+  font-family: monospace;
+}
+
+.time-display span {
+  font-size: 1.5rem;
+  color: gray;
+}
