@@ -1,10 +1,10 @@
-import { Actions } from "../App";
+import { Action } from "../App";
 
 export default function OperationBtn({ operation, dispatch }) {
   return (
     <button
       onClick={() =>
-        dispatch({ type: Actions.choose_operation, payload: operation })
+        dispatch({ type: Action.CHOOSE_OPERATION, payload: operation })
       }
     >
       {operation}
