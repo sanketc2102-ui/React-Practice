@@ -1,10 +1,11 @@
-import { Action } from "../App";
+import React from "react";
+import { Actions } from "../App";
 
-export default function OperationBtn({ operation, dispatch }) {
+export default function DigitBtn({ operation, dispatch }) {
   return (
     <button
       onClick={() =>
-        dispatch({ type: Action.CHOOSE_OPERATION, payload: operation })
+        dispatch({ type: Actions.CHOOSE_OPERATION, payload: operation })
       }
     >
       {operation}

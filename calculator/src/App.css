@@ -8,44 +8,43 @@
 
 body {
   background: linear-gradient(to right, dodgerblue, palegreen);
+  margin-top: 50px;
 }
 
 .calculator {
   display: grid;
-  justify-content: center;
   grid-template-columns: repeat(4, 6rem);
-  grid-template-rows: 7rem repeat(5, 6rem);
-  margin-top: 50px;
+  grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
+  justify-content: center;
 }
 
 .calculator button {
   font-size: 2rem;
-  background: rgb(255 255 255 / 0.5);
+  border: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
-  outline: none;
-  color: white;
 }
 
 .output {
   grid-column: 1 / -1;
-  background-color: black;
   color: white;
+  background-color: black;
 
   display: flex;
   flex-direction: column;
-  padding: 1rem;
   align-items: end;
   justify-content: space-between;
+  padding: 1rem;
 }
 
 .span-two {
   grid-column: span 2;
 }
 
-.previous {
-  font-size: 1.5rem;
-}
-
 .current {
   font-size: 2rem;
+}
+
+.previous {
+  font-size: 1.5rem;
 }

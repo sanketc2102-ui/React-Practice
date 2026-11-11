@@ -1,80 +1,79 @@
 import "./App.css";
-import { useReducer } from "react";
 import OperationBtn from "./components/OperationBtn";
 import DigitBtn from "./components/DigitBtn";
+import { useReducer } from "react";
 
-export const Action = {
+export const Actions = {
   ADD_DIGIT: "add_digit",
   DELETE: "delete",
-  EVALUATE: "evaluate",
   CLEAR: "clear",
   CHOOSE_OPERATION: "choose_operation",
+  EVALUATE: "evaluate",
 };
 
 const initialState = {
   currentOperand: null,
-  previousOperand: null,
-  operand: null,
+  preiousOperand: null,
+  operation: null,
 };
 
 function reducer(state, { type, payload }) {
   switch (type) {
-    case Action.ADD_DIGIT:
-      if (state.currentOperand?.contains(".")) return state;
-
+    case Actions.ADD_DIGIT:
       return {
         ...state,
         currentOperand: `${state.currentOperand || ""}${payload}`,
       };
-    case Action.CHOOSE_OPERATION:
+    case Actions.CHOOSE_OPERATION:
       return {
         ...state,
-        operand: payload,
-        previousOperand: state.currentOperand,
+        preiousOperand: state.currentOperand,
+        operation: payload,
         currentOperand: null,
       };
-    case Action.EVALUATE:
+    case Actions.EVALUATE:
       return {
+        ...state,
         currentOperand: evaluate(state),
-        previousOperand: null,
-        operand: null,
+        preiousOperand: null,
+        operation: null,
       };
-    case Action.CLEAR:
-      return {
-        initialState,
-      };
+
+    case Actions.CLEAR:
+      return initialState;
   }
 }
 
-function evaluate({ currentOperand, previousOperand, operand }) {
-  let pre = +previousOperand;
-  let curr = +currentOperand;
+function evaluate({ currentOperand, preiousOperand, operation }) {
+  const pev = +preiousOperand;
+  const curr = +currentOperand;
 
-  // if (!pre || !curr) return null;
+  console.log(pev, curr);
 
-  let solution = 0;
+  // if (!isNaN(pev) || !isNaN(curr)) return null;
 
-  switch (operand) {
+  let result = 0;
+
+  switch (operation) {
     case "+":
-      solution = pre + curr;
+      result = pev + curr;
       break;
     case "-":
-      solution = pre - curr;
+      result = pev - curr;
       break;
     case "*":
-      solution = pre * curr;
+      result = pev * curr;
       break;
     case "/":
-      solution = pre / curr;
+      result = pev / curr;
       break;
   }
 
-  console.log(solution);
-  return solution.toString();
+  return result.toString();
 }
 
 export default function App() {
-  const [{ currentOperand, previousOperand, operand }, dispatch] = useReducer(
+  const [{ currentOperand, preiousOperand, operation }, dispatch] = useReducer(
     reducer,
     initialState,
   );
@@ -83,13 +82,14 @@ export default function App() {
     <div className="calculator">
       <div className="output">
         <div className="previous">
-          {previousOperand} {operand}
+          {preiousOperand} {operation}
         </div>
         <div className="current">{currentOperand}</div>
       </div>
+
       <button
         className="span-two"
-        onClick={() => dispatch({ type: Action.CLEAR })}
+        onClick={() => dispatch({ type: Actions.CLEAR })}
       >
         AC
       </button>
@@ -112,11 +112,10 @@ export default function App() {
       <OperationBtn operation={"-"} dispatch={dispatch} />
 
       <DigitBtn digit={"."} dispatch={dispatch} />
-
       <DigitBtn digit={"0"} dispatch={dispatch} />
       <button
         className="span-two"
-        onClick={() => dispatch({ type: Action.EVALUATE })}
+        onClick={() => dispatch({ type: Actions.EVALUATE })}
       >
         =
       </button>
