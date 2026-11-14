@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+input {
+  width: 48px;
+  height: 48px;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.btns {
+  margin-top: 1.5rem;
+}
