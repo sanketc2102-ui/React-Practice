@@ -1,45 +1,60 @@
-import { useEffect, useRef, useState } from "react";
 import "./App.css";
+import { useEffect, useRef, useState } from "react";
+
+const Limit = 10;
 
 export default function App() {
-  const [recepies, setRecepies] = useState([]);
-  const [page, setPage] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+  const [products, setProducts] = useState([]);
   const [error, setError] = useState("");
-  const sentinal = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(0);
 
-  useEffect(() => {
-    async function fetchRecepies() {
-      setError("");
-      setIsLoading(true);
-      try {
-        const res = await fetch(
-          `https://dummyjson.com/recipes?limit=10&skip=${page * 10}`,
-        );
-        const data = await res.json();
-        console.log(data);
+  const sentinalRef = useRef(null);
 
-        setRecepies((recepies) => [...data.recipes, ...recepies]);
-      } catch (err) {
-      } finally {
-        setIsLoading(false);
+  console.log(products);
+
+  // fetch products and then re-fetch on page cahnge
+  useEffect(
+    function () {
+      async function fetchPorducts() {
+        setIsLoading(true);
+
+        try {
+          const res = await fetch(
+            `https://dummyjson.com/products?limit=${Limit}&skip=${page * 10}`,
+          );
+
+          if (!res.ok) throw new Error("failed to fech data", res.message);
+
+          const data = await res.json();
+          setProducts((products) => [...products, ...data.products]);
+        } catch (err) {
+          setError(err.message);
+        } finally {
+          setIsLoading(false);
+        }
       }
-    }
 
-    fetchRecepies();
-  }, [page]);
+      fetchPorducts();
+    },
+    [page],
+  );
 
-  useEffect(() => {
-    const node = sentinal.current;
+  // oberver api to make infifnity scroll works
+  useEffect(function () {
+    const node = sentinalRef.current;
+
     if (!node) return;
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
+      function (entries) {
+        const isIntersecting = entries[0].isIntersecting;
+
+        if (isIntersecting) {
           setPage((page) => page + 1);
         }
       },
-      { rootMargin: "200px" },
+      { rootMargin: "100px" },
     );
 
     observer.observe(node);
@@ -48,17 +63,23 @@ export default function App() {
   }, []);
 
   return (
-    <div>
-      <h1>Infinite Scroll</h1>
-      <ul>
-        {recepies.map((recepie, idx) => (
-          <li key={`${recepie.id}-${idx}`}>
-            <img src={recepie.image} alt="" />
-            <p>{recepie.name}</p>
+    <div className="contianer">
+      <h1 style={{ textAlign: "center", textTransform: "capitalize" }}>
+        infinity scroll
+      </h1>
+
+      <ul className="products">
+        {products?.map((product, idx) => (
+          <li key={idx} className="product">
+            <img src={product.thumbnail} />
+            <p>{product.title}</p>
           </li>
         ))}
       </ul>
-      <div ref={sentinal} style={{ height: 1 }}></div>
+      {isLoading && <p>Loading...</p>}
+      <div style={{ height: 1, color: "red" }} ref={sentinalRef}>
+        naruto
+      </div>
     </div>
   );
 }

@@ -1,9 +1,28 @@
-.container {
-  border: none;
-  border-radius: 5px;
-  width: 250px;
+body {
+  font-family: monospace;
+}
 
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+span {
+  font-size: 2rem;
+}
+
+.btns {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.btns button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
 }
