@@ -1,22 +1,15 @@
 .products {
   display: grid;
   grid-template-columns: repeat(3, 325px);
+  gap: 1.25rem;
+}
+
+.products li {
   list-style: none;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
+  background-color: aliceblue;
+  text-align: center;
 }
 
-.product {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  background-color: cornsilk;
-  border-radius: 10px;
-}
-
-.product img {
-  background-color: cornflowerblue;
+li img {
+  background-color: aquamarine;
 }
