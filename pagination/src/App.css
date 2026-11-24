@@ -1,0 +1,23 @@
+h1 {
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.posts {
+  width: 850px;
+  margin: auto;
+}
+
+li {
+  list-style-type: none;
+  border-bottom: 1px solid gainsboro;
+  padding-bottom: 16px;
+}
+
+.loader {
+  font-size: x-large;
+  color: hotpink;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}

@@ -1,6 +1,6 @@
 import "./App.css";
-import Post from "./components/Post";
+import Posta from "./components/pagination1/Posta";
 
 export default function App() {
-  return <Post />;
+  return <Posta />;
 }

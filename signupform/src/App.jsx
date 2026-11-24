@@ -1,6 +1,6 @@
 import "./App.css";
-import Signupfrom2 from "./components/Signupfrom2";
+import Signupform3 from "./components/Signupform3";
 
 export default function App() {
-  return <Signupfrom2 />;
+  return <Signupform3 />;
 }
