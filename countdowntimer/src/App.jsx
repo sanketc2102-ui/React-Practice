@@ -1,7 +1,6 @@
 import "./App.css";
-import CountDownTimer from "./components/CountDownTimer";
-import CountDowntimerTwo from "./components/CountDowntimerTwo";
+import CountDowntimer3 from "./components/CountDowntimer3";
 
 export default function App() {
-  return <CountDowntimerTwo />;
+  return <CountDowntimer3 />;
 }
