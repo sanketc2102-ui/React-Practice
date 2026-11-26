@@ -1,0 +1,13 @@
+body {
+  width: 1080px;
+  margin: 50px auto;
+}
+
+.form {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid grey;
+  padding: 25px;
+  border-radius: 15px;
+}

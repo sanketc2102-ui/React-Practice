@@ -5,3 +5,5 @@ export default function Signupform() {
     </form>
   );
 }
+
+import React from "react";
