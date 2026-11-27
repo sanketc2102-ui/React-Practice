@@ -1,34 +1,44 @@
+body {
+  font-family: sans-serif;
+}
+
 .container {
-  width: 850px;
-  margin: auto;
-}
-
-.quotes {
-  width: 720px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-li {
-  list-style: none;
-  border-bottom: 1px solid gainsboro;
+  width: 1080px;
+  margin: 0 auto;
 }
 
 .loader {
-  text-align: center;
+  font-size: 3rem;
   color: hotpink;
-  font-size: 2rem;
-  text-transform: capitalize;
+  text-align: center;
 }
 
 .pagination {
   display: flex;
   gap: 10px;
-  cursor: pointer;
 }
 
 .pagination span {
-  border: 2px solid;
-  padding: 10px 20px;
+  border: 1px solid;
+  padding: 16px 20px;
+  cursor: pointer;
+}
+
+.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+li {
+  border-bottom: 2px solid gainsboro;
+  list-style: none;
+  padding: 5px;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
