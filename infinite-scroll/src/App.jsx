@@ -1,10 +1,10 @@
 import "./App.css";
-import InfiScroll from "./components/InfiScroll";
+import InfiScroll2 from "./components/InfiScroll2";
 
 export default function App() {
   return (
     <div>
-      <InfiScroll />
+      <InfiScroll2 />
     </div>
   );
 }
