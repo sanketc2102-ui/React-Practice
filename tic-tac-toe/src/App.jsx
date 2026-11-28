@@ -1,11 +1,10 @@
 import "./App.css";
-import TicTacToe from "./TicTacToe";
+import TicTacToe from "./components/TicTacToe";
 
 function App() {
   return (
     <>
-      <TicTacToe size={3} />;
-      <TicTacToe size={5} />;
+      <TicTacToe />;
     </>
   );
 }
